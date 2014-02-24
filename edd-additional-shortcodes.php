@@ -18,7 +18,7 @@ function edd_asc_cart_has_contents( $attributes, $content = null ) {
 	extract( shortcode_atts( array(), $attributes, 'edd_cart_has_contents' ) );
 
 	if ( edd_get_cart_contents() )
-		return $content;
+		return do_shortcode( $content );
 }
 
 add_shortcode( 'edd_cart_is_empty', 'edd_asc_cart_is_empty' );
@@ -26,5 +26,5 @@ function edd_asc_cart_is_empty( $attributes, $content = null ) {
 	extract( shortcode_atts( array(), $attributes, 'edd_cart_has_contents' ) );
 
 	if ( !edd_get_cart_contents() )
-		return $content;
+		return do_shortcode( $content );
 }
