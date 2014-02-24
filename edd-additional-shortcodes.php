@@ -5,7 +5,7 @@ Plugin URI: http://filament-studios.com
 Description: Adds additional shortcodes to EDD
 Version: 1.0
 Author: Chris Klosowski
-Author URI: http://kungfugrep.com
+Author URI: http://filament-studios.com
 Text Domain: edd-asc-txt
 */
 
