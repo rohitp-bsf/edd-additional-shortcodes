@@ -18,13 +18,45 @@ function edd_asc_cart_has_contents( $attributes, $content = null ) {
 	extract( shortcode_atts( array(), $attributes, 'edd_cart_has_contents' ) );
 
 	if ( edd_get_cart_contents() )
-		return do_shortcode( $content );
+		return edd_asc_maybe_do_shortcode( $content );
 }
 
 add_shortcode( 'edd_cart_is_empty', 'edd_asc_cart_is_empty' );
 function edd_asc_cart_is_empty( $attributes, $content = null ) {
-	extract( shortcode_atts( array(), $attributes, 'edd_cart_has_contents' ) );
+	extract( shortcode_atts( array(), $attributes, 'edd_asc_cart_is_empty' ) );
 
 	if ( !edd_get_cart_contents() )
+		return edd_asc_maybe_do_shortcode( $content );
+}
+
+add_shortcode( 'edd_user_has_purchases', 'edd_asc_user_has_purchases' );
+function edd_asc_user_has_purchases( $attributes, $content = null ) {
+	extract( shortcode_atts( array(), $attributes, 'edd_user_has_purchases' ) );
+
+	$user_id = get_current_user_id();
+	if ( edd_has_purchases( $user_id ) )
+		return edd_asc_maybe_do_shortcode( $content );
+}
+
+add_shortcode( 'edd_user_has_no_purchases', 'edd_asc_user_has_no_purchases' );
+function edd_asc_user_has_no_purchases( $attributes, $content = null ) {
+	extract( shortcode_atts( array( 'loggedout' => true ), $attributes, 'edd_user_has_no_purchases' ) );
+
+	// If the user is logged out, and we aren't concerned with logged out users, don't show the content
+	if ( !$loggedout && !is_user_logged_in() )
+		return;
+
+	$user_id = get_current_user_id();
+	if ( !edd_has_purchases( $user_id ) )
+		return edd_asc_maybe_do_shortcode( $content );
+}
+
+// Helper functions
+function edd_asc_maybe_do_shortcode( $content )  {
+	$do_shortcode = apply_filters( 'edd_asc_do_shortcode', true );
+
+	if ( $do_shortcode )
 		return do_shortcode( $content );
+
+	return $content;
 }
