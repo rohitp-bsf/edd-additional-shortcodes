@@ -40,10 +40,10 @@ function edd_asc_user_has_purchases( $attributes, $content = null ) {
 
 add_shortcode( 'edd_user_has_no_purchases', 'edd_asc_user_has_no_purchases' );
 function edd_asc_user_has_no_purchases( $attributes, $content = null ) {
-	extract( shortcode_atts( array( 'loggedout' => true ), $attributes, 'edd_user_has_no_purchases' ) );
+	extract( shortcode_atts( array( 'loggedout' => 'true' ), $attributes, 'edd_user_has_no_purchases' ) );
 
 	// If the user is logged out, and we aren't concerned with logged out users, don't show the content
-	if ( !$loggedout && !is_user_logged_in() )
+	if ( $loggedout == 'false' && !is_user_logged_in() )
 		return;
 
 	$user_id = get_current_user_id();
