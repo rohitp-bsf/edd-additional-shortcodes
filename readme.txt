@@ -4,7 +4,7 @@ Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
 Tested up to: 3.8.1
 Stable tag: 1.0
-Donate link: https://kungfugrep.com
+Donate link: http://filament-studios.com
 License: GPLv2 or later
 
 Add addditional shortcodes for Easy Digital Downloads
