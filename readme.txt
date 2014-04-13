@@ -3,7 +3,7 @@ Contributors: cklosows
 Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 1.0
+Stable tag: 1.1
 Donate link: http://filament-studios.com
 License: GPLv2 or later
 
@@ -26,6 +26,12 @@ Show only if the user has no purchases. Includes the 'loggedout' parameter to sp
 should be included in seeing the content. (Default true)
 [edd_user_has_no_purchases loggedout=true]Content Here[/edd_user_has_no_purchases]
 
+Show content only if a user is logged in
+[edd_is_user_logged_in]Content Here[/edd_is_user_logged_in]
+
 == Changelog ==
+= 1.1 =
+* NEW: Added edd_is_user_logged_in shortcode
+
 = 1.0 =
 * NEW: Initial Release
