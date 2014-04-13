@@ -51,6 +51,16 @@ function edd_asc_user_has_no_purchases( $attributes, $content = null ) {
 		return edd_asc_maybe_do_shortcode( $content );
 }
 
+add_shortcode( 'edd_is_user_logged_in', 'edd_asc_is_user_logged_in' );
+function edd_asc_is_user_logged_in( $attributes, $content = null ) {
+	extract( shortcode_atts( array(), $attributes, 'edd_is_user_logged_in' ) );
+
+	if ( !is_user_logged_in() )
+		return;
+
+	return edd_asc_maybe_do_shortcode( $content );
+}
+
 // Helper functions
 function edd_asc_maybe_do_shortcode( $content )  {
 	$do_shortcode = apply_filters( 'edd_asc_do_shortcode', true );
