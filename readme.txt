@@ -3,11 +3,11 @@ Contributors: cklosows
 Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 1.1
+Stable tag: 1.2
 Donate link: http://filament-studios.com
 License: GPLv2 or later
 
-Add addditional shortcodes for Easy Digital Downloads
+Add additional shortcodes for Easy Digital Downloads
 
 == Description ==
 
@@ -29,7 +29,14 @@ should be included in seeing the content. (Default true)
 Show content only if a user is logged in
 [edd_is_user_logged_in]Content Here[/edd_is_user_logged_in]
 
+Show content only if a user has purchased any of the specified download ids.
+Supports multiple IDs. If a download has variable pricing, you can pass just the ID for all options, or <download id>:<price id> for a specific variable pricing option.
+[edd_user_has_purchased ids="20,34,25:1"]Content Here[/edd_user_has_purchased]
+
 == Changelog ==
+= 1.2 =
+* NEW: edd_user_has_purchased shortcode
+
 = 1.1 =
 * NEW: Added edd_is_user_logged_in shortcode
 
