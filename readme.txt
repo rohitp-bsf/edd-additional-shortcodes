@@ -1,10 +1,10 @@
 === Easy Digital Downloads - Additional Shortcodes ===
-Contributors: cklosows
+Contributors: easydigitaldownloads, cklosows
 Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 1.2
-Donate link: http://filament-studios.com
+Tested up to: 4.7
+Stable tag: 1.3
+Donate link: https://easydigitaldownloads.com/donate/
 License: GPLv2 or later
 
 Add additional shortcodes for Easy Digital Downloads
@@ -22,18 +22,24 @@ Show only if the cart is empty
 Show if the user has made previous purchases (will always be hidden if logged out)
 [edd_user_has_purchases]Content Here[/edd_user_has_purchases]
 
-Show only if the user has no purchases. Includes the 'loggedout' parameter to specify if logged out users 
+Show only if the user has no purchases. Includes the 'loggedout' parameter to specify if logged out users
 should be included in seeing the content. (Default true)
 [edd_user_has_no_purchases loggedout=true]Content Here[/edd_user_has_no_purchases]
 
 Show content only if a user is logged in
 [edd_is_user_logged_in]Content Here[/edd_is_user_logged_in]
 
+Show content only if a user is logged out
+[edd_is_user_logged_out]Content Here[/edd_is_user_logged_out]
+
 Show content only if a user has purchased any of the specified download ids.
 Supports multiple IDs. If a download has variable pricing, you can pass just the ID for all options, or <download id>:<price id> for a specific variable pricing option.
 [edd_user_has_purchased ids="20,34,25:1"]Content Here[/edd_user_has_purchased]
 
 == Changelog ==
+= 1.3 =
+* NEW: edd_is_user_logged_out shortcode
+
 = 1.2 =
 * NEW: edd_user_has_purchased shortcode
 
