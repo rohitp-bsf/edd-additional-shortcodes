@@ -12,8 +12,6 @@ class EDD_Additional_Shortcodes_SL {
 	}
 
 	function has_active_licenses( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_has_active_licenses' ) );
-
 		$has_active_license = $this->has_license_check( 'active' );
 		if ( $has_active_license ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
@@ -21,8 +19,6 @@ class EDD_Additional_Shortcodes_SL {
 	}
 
 	function has_expired_licenses( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_has_expired_licenses' ) );
-
 		$has_expired_license = $this->has_license_check( 'expired' );
 		if ( $has_expired_license ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
