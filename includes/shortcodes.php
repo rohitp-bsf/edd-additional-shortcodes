@@ -18,7 +18,6 @@ class EDD_Additional_Shortcodes_Core {
 	}
 	
 	function cart_has_contents( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_cart_has_contents' ) );
 		if ( edd_get_cart_contents() ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
@@ -29,10 +28,10 @@ class EDD_Additional_Shortcodes_Core {
 			return '';
 		}
 
-		extract( shortcode_atts( array( 'ids' => '', 'match' => 'any' ), $attributes, 'edd_items_in_cart' ) );
+		$args = shortcode_atts( array( 'ids' => '', 'match' => 'any' ), $attributes, 'edd_items_in_cart' );
 
-		$downloads = explode( ',', str_replace( ' ', '', $ids ) );
-
+		$downloads = explode( ',', str_replace( ' ', '', $args['ids'] ) );
+		$match     = $args['match'];
 
 		$matches = 0;
 		foreach ( $downloads as $download ) {
@@ -60,14 +59,12 @@ class EDD_Additional_Shortcodes_Core {
 	}
 	
 	function cart_is_empty( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_asc_cart_is_empty' ) );
 		if ( !edd_get_cart_contents() ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
 	}
 	
 	function user_has_purchases( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_user_has_purchases' ) );
 		$user_id = get_current_user_id();
 		if ( edd_has_purchases( $user_id ) ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
@@ -75,19 +72,19 @@ class EDD_Additional_Shortcodes_Core {
 	}
 	
 	function user_has_purchased( $attributes, $content = null ) {
-		extract( shortcode_atts( array( 'ids' => '' ), $attributes, 'edd_user_has_purchased' ) );
+		$args      = shortcode_atts( array( 'ids' => '' ), $attributes, 'edd_user_has_purchased' );
+		$downloads = explode( ',', str_replace( ' ', '', $args['ids'] ) );
+
 		// If the user is logged out, and we aren't concerned with logged out users, don't show the content
-		if ( !is_user_logged_in() || empty( $ids ) ) {
+		if ( ! is_user_logged_in() || empty( $downloads ) ) {
 			return '';
 		}
 
 		$user_id = get_current_user_id();
 
-		if ( !edd_has_purchases( $user_id ) ) {
+		if ( ! edd_has_purchases( $user_id ) ) {
 			return '';
 		}
-
-		$downloads = explode( ',', str_replace( ' ', '', $ids ) );
 
 		foreach ( $downloads as $download ) {
 			if ( strpos( $download, ':' ) ) {
@@ -105,26 +102,26 @@ class EDD_Additional_Shortcodes_Core {
 	}
 	
 	function user_has_no_purchases( $attributes, $content = null ) {
-		extract( shortcode_atts( array( 'loggedout' => 'true' ), $attributes, 'edd_user_has_no_purchases' ) );
+		$args = shortcode_atts( array( 'loggedout' => 'true' ), $attributes, 'edd_user_has_no_purchases' );
+
 		// If the user is logged out, and we aren't concerned with logged out users, don't show the content
-		if ( $loggedout == 'false' && !is_user_logged_in() ) {
+		if ( $args['loggedout'] == 'false' && ! is_user_logged_in() ) {
 			return '';
 		}
+
 		$user_id = get_current_user_id();
 		if ( !edd_has_purchases( $user_id ) )
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 	}
 	
 	function is_user_logged_in( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_is_user_logged_in' ) );
-		if ( !is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 			return '';
 		}
 		return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 	}
 	
 	function is_user_logged_out( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_is_user_logged_out' ) );
 		if ( is_user_logged_in() ) {
 			return '';
 		}
