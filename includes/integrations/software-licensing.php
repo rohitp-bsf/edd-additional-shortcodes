@@ -7,25 +7,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 class EDD_Additional_Shortcodes_SL {
 
 	public function __construct() {
-		add_shortcode( 'edd_has_active_license', array( $this, 'has_active_license' ) );
+		add_shortcode( 'edd_has_active_licenses',  array( $this, 'has_active_licenses' ) );
+		add_shortcode( 'edd_has_expired_licenses', array( $this, 'has_expired_licenses' ) );
 	}
 
-	function has_active_license( $attributes, $content = null ) {
-		extract( shortcode_atts( array(), $attributes, 'edd_has_active_license' ) );
+	function has_active_licenses( $attributes, $content = null ) {
+		extract( shortcode_atts( array(), $attributes, 'edd_has_active_licenses' ) );
 
-		$has_active_license = $this->has_active_license_check();
+		$has_active_license = $this->has_license_check( 'active' );
 		if ( $has_active_license ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
 	}
 
-	private function has_active_license_check() {
+	function has_expired_licenses( $attributes, $content = null ) {
+		extract( shortcode_atts( array(), $attributes, 'edd_has_expired_licenses' ) );
+
+		$has_expired_license = $this->has_license_check( 'expired' );
+		if ( $has_expired_license ) {
+			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
+		}
+	}
+
+	private function has_license_check( $status = '' ) {
+		if ( empty( $status ) ) {
+			return false;
+		}
+
 		$license_keys = edd_software_licensing()->get_license_keys_of_user();
 		foreach ( $license_keys as $license ) {
 
-			$status = edd_software_licensing()->get_license_status( $license->ID );
+			$license_status = edd_software_licensing()->get_license_status( $license->ID );
 
-			if ( 'expired' !== $status ) {
+			if ( $status === $license_status ) {
 				return true;
 			}
 
