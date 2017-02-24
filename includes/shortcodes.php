@@ -8,6 +8,7 @@ class EDD_Additional_Shortcodes_Core {
 
 	public function __construct() {
 		add_shortcode( 'edd_cart_has_contents',     array( $this, 'cart_has_contents' ) );
+		add_shortcode( 'edd_items_in_cart',         array( $this, 'items_in_cart' ) );
 		add_shortcode( 'edd_cart_is_empty',         array( $this, 'cart_is_empty' ) );
 		add_shortcode( 'edd_user_has_purchases',    array( $this, 'user_has_purchases' ) );
 		add_shortcode( 'edd_user_has_purchased',    array( $this, 'user_has_purchased' ) );
@@ -21,6 +22,41 @@ class EDD_Additional_Shortcodes_Core {
 		if ( edd_get_cart_contents() ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
+	}
+
+	function items_in_cart( $attributes, $content = null ) {
+		if ( ! edd_get_cart_contents() ) {
+			return '';
+		}
+
+		extract( shortcode_atts( array( 'ids' => '', 'match' => 'any' ), $attributes, 'edd_items_in_cart' ) );
+
+		$downloads = explode( ',', str_replace( ' ', '', $ids ) );
+
+
+		$matches = 0;
+		foreach ( $downloads as $download ) {
+			if ( strpos( $download, ':' ) ) {
+				$download = explode( ':', $download );
+				$item_in_cart = edd_item_in_cart( $download[0], array( 'price_id' => $download[1] ) );
+			} else {
+				$item_in_cart = edd_item_in_cart( $download );
+			}
+
+			if ( $item_in_cart ) {
+				$matches++;
+
+				if ( 'any' === strtolower( $match ) ) {
+					return $content;
+				}
+			}
+		}
+
+		if ( 'all' === strtolower( $match ) && count( $downloads ) === $matches ) {
+			return $content;
+		}
+
+		return '';
 	}
 	
 	function cart_is_empty( $attributes, $content = null ) {
