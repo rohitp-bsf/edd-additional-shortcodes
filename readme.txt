@@ -25,6 +25,12 @@ Show only if the cart contains any/all of the specified items
 [edd_items_in_cart ids="20,34,25:1" match="all"]Content Here[/edd_items_in_cart]
 [edd_items_in_cart ids="20,34,25:1" match="any"]Content Here[/edd_items_in_cart]
 
+Show only if the cart does not contain any/all of the specified items
+[edd_items_not_in_cart ids="20"]Content here[/edd_items_not_in_cart]
+[edd_items_not_in_cart ids="20,34,25:1"]Content Here[/edd_items_not_in_cart]
+[edd_items_not_in_cart ids="20,34,25:1" match="all"]Content Here[/edd_items_not_in_cart]
+[edd_items_not_in_cart ids="20,34,25:1" match="any"]Content Here[/edd_items_not_in_cart]
+
 Show if the user has made previous purchases (will always be hidden if logged out)
 [edd_user_has_purchases]Content Here[/edd_user_has_purchases]
 
