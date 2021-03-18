@@ -9,6 +9,7 @@ class EDD_Additional_Shortcodes_Core {
 	public function __construct() {
 		add_shortcode( 'edd_cart_has_contents',     array( $this, 'cart_has_contents' ) );
 		add_shortcode( 'edd_items_in_cart',         array( $this, 'items_in_cart' ) );
+		add_shortcode( 'edd_items_not_in_cart',     array( $this, 'items_not_in_cart' ) );
 		add_shortcode( 'edd_cart_is_empty',         array( $this, 'cart_is_empty' ) );
 		add_shortcode( 'edd_user_has_purchases',    array( $this, 'user_has_purchases' ) );
 		add_shortcode( 'edd_user_has_purchased',    array( $this, 'user_has_purchased' ) );
@@ -43,6 +44,46 @@ class EDD_Additional_Shortcodes_Core {
 			}
 
 			if ( $item_in_cart ) {
+				$matches++;
+
+				if ( 'any' === strtolower( $match ) ) {
+					return edd_additional_shortcodes()->maybe_do_shortcode( $content );
+				}
+			}
+		}
+
+		if ( 'all' === strtolower( $match ) && count( $downloads ) === $matches ) {
+			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Displays content only if specified items are NOT in the cart.
+	 *
+	 * @param array  $attributes
+	 * @param string $content
+	 *
+	 * @since 1.4.1
+	 * @return string
+	 */
+	public function items_not_in_cart( $attributes, $content = '' ) {
+		$args = shortcode_atts( array( 'ids' => '', 'match' => 'any' ), $attributes, 'edd_items_not_in_cart' );
+
+		$downloads = explode( ',', str_replace( ' ', '', $args['ids'] ) );
+		$match     = $args['match'];
+
+		$matches = 0;
+		foreach( $downloads as $download ) {
+			if ( strpos( $download, ':' ) ) {
+				$download         = explode( ':', $download );
+				$item_not_in_cart = ! edd_item_in_cart( $download[0], array( 'price_id' => $download[1] ) );
+			} else {
+				$item_not_in_cart = ! edd_item_in_cart( $download );
+			}
+
+			if ( $item_not_in_cart ) {
 				$matches++;
 
 				if ( 'any' === strtolower( $match ) ) {
