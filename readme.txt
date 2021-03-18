@@ -59,6 +59,7 @@ Show content only if a user has active licenses
 `[edd_has_active_licenses] Content Here [/edd_has_active_licenses]`
 
 Show content only if user has expired licenses
+
 `[edd_has_expired_licenses]Content Here[/edd_has_expired_licenses]`
 
 == Changelog ==
