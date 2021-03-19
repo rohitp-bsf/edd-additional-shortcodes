@@ -38,7 +38,7 @@ Show if the user has made previous purchases (will always be hidden if logged ou
 Show only if the user has no purchases. Includes the 'loggedout' parameter to specify if logged out users
 should be included in seeing the content. (Default true)
 
-`[edd_user_has_no_purchases loggedout=true] Content Here [/edd_user_has_no_purchases]`
+`[edd_user_has_no_purchases loggedout="true"] Content Here [/edd_user_has_no_purchases]`
 
 Show content only if a user is logged in
 
@@ -53,7 +53,8 @@ Supports multiple IDs. If a download has variable pricing, you can pass just the
 
 `[edd_user_has_purchased ids="20,34,25:1"] Content Here [/edd_user_has_purchased]`
 
-Software Licensing Support:
+**Software Licensing Support:**
+
 Show content only if a user has active licenses
 
 `[edd_has_active_licenses] Content Here [/edd_has_active_licenses]`
