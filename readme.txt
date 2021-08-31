@@ -2,7 +2,7 @@
 Contributors: easydigitaldownloads, cklosows
 Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
-Tested up to: 4.7
+Tested up to: 5.8
 Stable tag: 1.4
 Donate link: https://easydigitaldownloads.com/donate/
 License: GPLv2 or later
