@@ -2,8 +2,8 @@
 Contributors: easydigitaldownloads, cklosows
 Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
-Tested up to: 4.7
-Stable tag: 1.4
+Tested up to: 5.8
+Stable tag: 1.4.1
 Donate link: https://easydigitaldownloads.com/donate/
 License: GPLv2 or later
 
@@ -11,45 +11,64 @@ Add additional shortcodes for Easy Digital Downloads
 
 == Description ==
 
-As simple as it sounds. Adds some additional shortcodes to the Easy Digital Downloads plugin. The shortcodes included all need opening and closing tags:
+This plugin is as simple as it sounds. It adds some additional shortcodes to the Easy Digital Downloads plugin. The shortcodes included all need opening and closing tags:
 
 Show only if the cart has items in it
-[edd_cart_has_contents]Content Here[/edd_cart_has_contents]
+
+`[edd_cart_has_contents] Content Here [/edd_cart_has_contents]`
 
 Show only if the cart is empty
-[edd_cart_is_empty]Content Here[/edd_cart_is_empty]
+
+`[edd_cart_is_empty] Content Here [/edd_cart_is_empty]`
 
 Show only if the cart contains any/all of the specified items
-[edd_items_in_cart ids="20"]Content Here[/edd_items_in_cart]
-[edd_items_in_cart ids="20,34,25:1"]Content Here[/edd_items_in_cart]
-[edd_items_in_cart ids="20,34,25:1" match="all"]Content Here[/edd_items_in_cart]
-[edd_items_in_cart ids="20,34,25:1" match="any"]Content Here[/edd_items_in_cart]
+
+`[edd_items_in_cart ids="20"] Content Here [/edd_items_in_cart]`
+
+`[edd_items_in_cart ids="20,34,25:1"] Content Here [/edd_items_in_cart]`
+
+`[edd_items_in_cart ids="20,34,25:1" match="all"] Content Here [/edd_items_in_cart]`
+
+`[edd_items_in_cart ids="20,34,25:1" match="any"] Content Here [/edd_items_in_cart]`
 
 Show if the user has made previous purchases (will always be hidden if logged out)
-[edd_user_has_purchases]Content Here[/edd_user_has_purchases]
+
+`[edd_user_has_purchases] Content Here [/edd_user_has_purchases]`
 
 Show only if the user has no purchases. Includes the 'loggedout' parameter to specify if logged out users
 should be included in seeing the content. (Default true)
-[edd_user_has_no_purchases loggedout=true]Content Here[/edd_user_has_no_purchases]
+
+`[edd_user_has_no_purchases loggedout="true"] Content Here [/edd_user_has_no_purchases]`
 
 Show content only if a user is logged in
-[edd_is_user_logged_in]Content Here[/edd_is_user_logged_in]
+
+`[edd_is_user_logged_in] Content Here [/edd_is_user_logged_in]`
 
 Show content only if a user is logged out
-[edd_is_user_logged_out]Content Here[/edd_is_user_logged_out]
+
+`[edd_is_user_logged_out] Content Here [/edd_is_user_logged_out]`
 
 Show content only if a user has purchased any of the specified download ids.
-Supports multiple IDs. If a download has variable pricing, you can pass just the ID for all options, or <download id>:<price id> for a specific variable pricing option.
-[edd_user_has_purchased ids="20,34,25:1"]Content Here[/edd_user_has_purchased]
+Supports multiple IDs. If a download has variable pricing, you can pass just the ID for all options, or `<download id>`:`<price id>` for a specific variable pricing option.
 
-Software Licensing Support:
+`[edd_user_has_purchased ids="20,34,25:1"] Content Here [/edd_user_has_purchased]`
+
+**Software Licensing Support:**
+
 Show content only if a user has active licenses
-[edd_has_active_licenses]Content Here[/edd_has_active_licenses]
+
+`[edd_has_active_licenses] Content Here [/edd_has_active_licenses]`
 
 Show content only if user has expired licenses
-[edd_has_expired_licenses]Content Here[/edd_has_expired_licenses]
+
+`[edd_has_expired_licenses]Content Here[/edd_has_expired_licenses]`
 
 == Changelog ==
+= 1.4.1 - September 2, 2021 =
+* Fix: Compatibility with Software Licensing 3.8.
+* Fix: Use 'maybe_do_shortcode' to allow for nested shortcodes.
+* Tweak: Improve readme.txt formatting to make examples more readable.
+
 = 1.4 - February 24, 2017 =
 * NEW: Add support for Software Licensing.
 * NEW: Add support for specific items in the cart.

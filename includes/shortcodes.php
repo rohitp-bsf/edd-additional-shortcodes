@@ -46,13 +46,13 @@ class EDD_Additional_Shortcodes_Core {
 				$matches++;
 
 				if ( 'any' === strtolower( $match ) ) {
-					return $content;
+					return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 				}
 			}
 		}
 
 		if ( 'all' === strtolower( $match ) && count( $downloads ) === $matches ) {
-			return $content;
+			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
 
 		return '';
@@ -63,14 +63,14 @@ class EDD_Additional_Shortcodes_Core {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
 	}
-	
+
 	function user_has_purchases( $attributes, $content = null ) {
 		$user_id = get_current_user_id();
 		if ( edd_has_purchases( $user_id ) ) {
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 		}
 	}
-	
+
 	function user_has_purchased( $attributes, $content = null ) {
 		$args      = shortcode_atts( array( 'ids' => '' ), $attributes, 'edd_user_has_purchased' );
 		$downloads = explode( ',', str_replace( ' ', '', $args['ids'] ) );
@@ -94,13 +94,13 @@ class EDD_Additional_Shortcodes_Core {
 				$has_purchased = edd_has_user_purchased( $user_id, $download );
 			}
 			if ( $has_purchased ) {
-				return $content;
+				return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 			}
 		}
 
 		return '';
 	}
-	
+
 	function user_has_no_purchases( $attributes, $content = null ) {
 		$args = shortcode_atts( array( 'loggedout' => 'true' ), $attributes, 'edd_user_has_no_purchases' );
 
@@ -113,7 +113,7 @@ class EDD_Additional_Shortcodes_Core {
 		if ( !edd_has_purchases( $user_id ) )
 			return edd_additional_shortcodes()->maybe_do_shortcode( $content );
 	}
-	
+
 	function is_user_logged_in( $attributes, $content = null ) {
 		if ( ! is_user_logged_in() ) {
 			return '';

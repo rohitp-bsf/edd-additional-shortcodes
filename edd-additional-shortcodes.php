@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Easy Digital Downloads - Additional Shortcodes
-Plugin URI: https://easydigitaldownloads.com/downloads/edd-additional-shortcodes/
-Description: Adds additional shortcodes to EDD
-Version: 1.4
-Author: Easy Digital Downloads
-Author URI: https://easydigitaldownloads.com
-Text Domain: edd-asc-txt
+ * Plugin Name: Easy Digital Downloads - Additional Shortcodes
+ * Plugin URI: https://easydigitaldownloads.com/downloads/edd-additional-shortcodes/
+ * Description: Adds additional shortcodes to Easy Digital Downloads.
+ * Version: 1.4.1
+ * Author: Sandhills Development, LLC
+ * Author URI: https://sandhillsdev.com
+ * Text Domain: edd-asc-txt
 */
 
 if ( ! defined ( 'ABSPATH' ) ) {
@@ -61,7 +61,7 @@ class EDD_Additional_Shortcodes {
 		 * @since 1.4
 		 */
 		private function properties() {
-			self::$instance->version = '1.4';
+			self::$instance->version = '1.4.1';
 			self::$instance->plugin_dir = trailingslashit( plugin_dir_path( __FILE__ ) );
 			self::$instance->plugin_url = trailingslashit( plugin_dir_url( __FILE__ ) );
 		}
@@ -107,4 +107,4 @@ class EDD_Additional_Shortcodes {
 function edd_additional_shortcodes() {
 	return EDD_Additional_Shortcodes::instance();
 }
-add_action( 'plugins_loaded', 'edd_additional_shortcodes' );
+add_action( 'plugins_loaded', 'edd_additional_shortcodes', 100 );
