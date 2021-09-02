@@ -3,7 +3,7 @@ Contributors: easydigitaldownloads, cklosows
 Tags: Easy Digital Downloads, Shortcodes
 Requires at least: 3.0
 Tested up to: 5.8
-Stable tag: 1.4
+Stable tag: 1.4.1
 Donate link: https://easydigitaldownloads.com/donate/
 License: GPLv2 or later
 
@@ -64,6 +64,11 @@ Show content only if user has expired licenses
 `[edd_has_expired_licenses]Content Here[/edd_has_expired_licenses]`
 
 == Changelog ==
+= 1.4.1 - September 2, 2021 =
+* Fix: Compatibility with Software Licensing 3.8.
+* Fix: Use 'maybe_do_shortcode' to allow for nested shortcodes.
+* Tweak: Improve readme.txt formatting to make examples more readable.
+
 = 1.4 - February 24, 2017 =
 * NEW: Add support for Software Licensing.
 * NEW: Add support for specific items in the cart.
