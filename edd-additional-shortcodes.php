@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Easy Digital Downloads - Additional Shortcodes
-Plugin URI: https://easydigitaldownloads.com/downloads/edd-additional-shortcodes/
-Description: Adds additional shortcodes to EDD
-Version: 1.4
-Author: Easy Digital Downloads
-Author URI: https://easydigitaldownloads.com
-Text Domain: edd-asc-txt
+ * Plugin Name: Easy Digital Downloads - Additional Shortcodes
+ * Plugin URI: https://easydigitaldownloads.com/downloads/edd-additional-shortcodes/
+ * Description: Adds additional shortcodes to Easy Digital Downloads.
+ * Version: 1.4
+ * Author: Sandhills Development, LLC
+ * Author URI: https://sandhillsdev.com
+ * Text Domain: edd-asc-txt
 */
 
 if ( ! defined ( 'ABSPATH' ) ) {
