@@ -107,4 +107,4 @@ class EDD_Additional_Shortcodes {
 function edd_additional_shortcodes() {
 	return EDD_Additional_Shortcodes::instance();
 }
-add_action( 'plugins_loaded', 'edd_additional_shortcodes' );
+add_action( 'plugins_loaded', 'edd_additional_shortcodes', 100 );
