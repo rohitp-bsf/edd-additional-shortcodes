@@ -63,6 +63,10 @@ Show content only if user has expired licenses
 
 `[edd_has_expired_licenses]Content Here[/edd_has_expired_licenses]`
 
+Show content only if user has all expired licenses
+
+`[edd_has_all_expired_licenses]Content Here[/edd_has_all_expired_licenses]`
+
 == Changelog ==
 = 1.4.1 - September 2, 2021 =
 * Fix: Compatibility with Software Licensing 3.8.
