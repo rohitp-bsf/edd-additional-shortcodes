@@ -53,21 +53,16 @@ class EDD_Additional_Shortcodes_SL {
 		return false;
 	}
 
-	private function has_all_license_check( $status = '' ) {
+	private function has_all_license_check( $status ) {
 		if ( empty( $status ) ) {
 			return false;
 		}
 
 		$license_keys = edd_software_licensing()->get_license_keys_of_user();
-
 		foreach ( $license_keys as $license ) {
-
-			$license_status = edd_software_licensing()->get_license_status( $license->ID );
-
-			if ( $status !== $license_status ) {
+			if ( $status !== $license->status ) {
 				return false;
 			}
-
 		}
 
 		return true;
