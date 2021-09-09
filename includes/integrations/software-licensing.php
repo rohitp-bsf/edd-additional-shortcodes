@@ -54,9 +54,6 @@ class EDD_Additional_Shortcodes_SL {
 	}
 
 	private function has_all_license_check( $status ) {
-		if ( empty( $status ) ) {
-			return false;
-		}
 
 		$license_keys = edd_software_licensing()->get_license_keys_of_user();
 		foreach ( $license_keys as $license ) {
