@@ -26,6 +26,12 @@ class EDD_Additional_Shortcodes_SL {
 		}
 	}
 
+    /**
+     * This function is only render shortcode if all licences are expired.
+     * @param array $attributes shortcode parameters.
+     * @param null $content shortcode content.
+     * @return string|void
+     */
 	function has_all_expired_licenses( $attributes, $content = null ) {
         $has_all_expired_licenses = $this->has_all_license_check( 'expired' );
 
@@ -53,6 +59,11 @@ class EDD_Additional_Shortcodes_SL {
 		return false;
 	}
 
+    /**
+     * This function is only to check if all licenses have a given status.
+     * @param string $status license status.
+     * @return bool
+     */
 	private function has_all_license_check( $status ) {
 
 		$license_keys = edd_software_licensing()->get_license_keys_of_user();
