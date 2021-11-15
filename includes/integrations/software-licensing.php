@@ -64,6 +64,9 @@ class EDD_Additional_Shortcodes_SL {
 
     /**
      * This function is only to check if all licenses have a given status.
+     * 
+     * @since 1.4.2
+     * 
      * @param string $status license status.
      * @return bool
      */
