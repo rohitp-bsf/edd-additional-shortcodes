@@ -28,6 +28,9 @@ class EDD_Additional_Shortcodes_SL {
 
     /**
      * This function is only render shortcode if all licences are expired.
+     *
+     * @since 1.4.2
+     * 
      * @param array $attributes shortcode parameters.
      * @param null $content shortcode content.
      * @return string|void
