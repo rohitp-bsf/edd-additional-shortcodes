@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin constants.
  */
 define( 'EDD_ASC_VERSION',   '1.4.1' );
+
 define( 'EDD_ASC_FILE',      __FILE__ );
 define( 'EDD_ASC_BASENAME',  plugin_basename( EDD_ASC_FILE ) );
 define( 'EDD_ASC_DIR',       trailingslashit( plugin_dir_path( EDD_ASC_FILE ) ) );
