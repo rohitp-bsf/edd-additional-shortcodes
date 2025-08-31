@@ -60,6 +60,7 @@ final class EDD_Additional_Shortcodes {
 
 		return self::$instance;
 	}
+	
 
 	/**
 	 * Private constructor to enforce singleton.
