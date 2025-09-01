@@ -13,6 +13,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 	exit;
 }
 
+
 class EDD_Additional_Shortcodes {
 		/**
 		 * @var         EDD_Additional_Shortcodes $instance The one true EDD_Additional_Shortcodes
